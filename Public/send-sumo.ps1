@@ -91,8 +91,11 @@ function send-sumo {
 
     [CmdletBinding()]
   param(
+    [parameter(Mandatory=$false, HelpMessage="The URL To SumoLogic's v1 API, https://endpoint1.collection.us2.sumologic.com/receiver/v1/http")]
     [string]$AggregateUrl,
+    [parameter(Mandatory=$true, HelpMessage="You SumoLogic's API key to submit an HTTP log entry")]
     [string]$Aggregatekey,
+    [parameter(Mandatory=$false, HelpMessage="Your logging level, examples: DEBUG ,INFO, WARNING, or ERROR. The default is INFO")]
     [string]$loglevel,
     [int32]$number,
     [string]$message,
@@ -134,7 +137,7 @@ function send-sumo {
       $AggregateUrl = "https://endpoint1.collection.us2.sumologic.com/receiver/v1/http/$Aggregatekey"
     }
     if(!$loglevel){
-      $loglevel = 'NOTSET'
+      $loglevel = 'INFO'
     }
     $loglevel = $loglevel.toupper()
     if(!$sourcehost){

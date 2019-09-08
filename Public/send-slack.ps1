@@ -1,6 +1,6 @@
 <#
 .Synopsis
-   Slacks
+   Send a message to Slack
    MIT License Copyright 2019, nickatwork.com
 .DESCRIPTION
 
