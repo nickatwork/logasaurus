@@ -12,7 +12,7 @@
 
 ## Description
 
-Logging modules to simply logging scenarios
+Logging modules to simply logging scenarios. Send a log message to SumoLogic, email, slack, or a local log file formatted a logfmt or JSON.
 
 ## Requirements
 
