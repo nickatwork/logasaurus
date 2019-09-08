@@ -32,10 +32,10 @@ or
 
 ### Tools
 
-* [get-log]()
+* [get-log](./Docs/get-log.md)
 * [send-sumo](./Docs/send-sumo.md)
-* [send-email]()
-* [send-slack]()
+* [send-email](./Docs/send-email.md)
+* [send-slack](./Docs/send-slack.md)
 
 ## Contributing
 
