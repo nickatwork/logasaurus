@@ -28,7 +28,7 @@ Logging modules to simply logging scenarios
 
 or
 
-`git clone '
+`git clone https://github.com/nickatwork/logasaurus.git`
 
 ### Tools
 
