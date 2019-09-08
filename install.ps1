@@ -9,13 +9,13 @@ if((Get-ExecutionPolicy) -gt 'RemoteSigned' -or (Get-ExecutionPolicy) -eq 'ByPas
     Write-Output "'Set-ExecutionPolicy RemoteSigned -scope CurrentUser'"
     break
 }
-if(-not (test-path "./logasaur")){
-    start-bitstransfer -source https://github.com/nickatwork/logasaur.zip
+if(-not (test-path "./logasaurus")){
+    start-bitstransfer -source https://github.com/nickatwork/logasaurus/logasaurus.zip
     Expand-Archive logasaur.zip
 }
 cd logaSaur
-if(-not (test-path "logasaur.psd1")){
-    import-module "./logasaur.psd1"
+if(-not (test-path "logasaurus.psd1")){
+    import-module "./logasaurus.psd1"
 }
 
 

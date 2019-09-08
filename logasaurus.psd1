@@ -9,10 +9,10 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-RootModule = './logasaur.psm1'
+RootModule = './logasaurus.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.9.0'
+ModuleVersion = '0.9.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()

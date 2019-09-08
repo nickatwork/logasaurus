@@ -108,7 +108,7 @@ function send-sumo {
     [switch]$LogErrors
     )
     #checks
-    $version = Get-Module -Name logasaur
+    $version = Get-Module -Name logasaurus
       foreach($item in $version){
         $moduleversions = $item.version
         $modulename = $item.name
