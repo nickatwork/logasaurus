@@ -1,6 +1,6 @@
 ---
-external help file: logasaur-help.xml
-Module Name: logasaur
+external help file: logasaurus-help.xml
+Module Name: logasaurus
 online version: https://github.com/nickatwork/logasaurus
 schema: 2.0.0
 ---

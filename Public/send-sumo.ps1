@@ -1,3 +1,6 @@
+
+
+function send-sumo {
 <#
 .Synopsis
    Send logasaur log to aggregate logging service.
@@ -57,11 +60,11 @@
 
 .PARAMETER json
 
-  Formatting of information in sumologic as JSON
+  Formatting of logging message in Sumologic as JSON
 
 .PARAMETER logfmt
 
-  Formatting of information in sumologic as logfmt style. Simply a series of one or more key values.
+  Formatting of logging message in Sumologic as logfmt style. Simply a series of one or more key values.
 
 .PARAMETER test
 
@@ -86,28 +89,37 @@
 https://github.com/nickatwork/logasaurus
 
 #>
-
-function send-sumo {
-
     [CmdletBinding()]
   param(
     [parameter(Mandatory=$false, HelpMessage="The URL To SumoLogic's v1 API, https://endpoint1.collection.us2.sumologic.com/receiver/v1/http")]
     [string]$AggregateUrl,
-    [parameter(Mandatory=$true, HelpMessage="You SumoLogic's API key to submit an HTTP log entry")]
+    [parameter(Mandatory=$true, HelpMessage="Your SumoLogic's API key to submit an HTTP log entry")]
     [string]$Aggregatekey,
     [parameter(Mandatory=$false, HelpMessage="Your logging level, examples: DEBUG ,INFO, WARNING, or ERROR. The default is INFO")]
     [string]$loglevel,
+    [parameter(Mandatory=$false, HelpMessage="Your error log or eventid number. Must be an integer")]
     [int32]$number,
+    [parameter(Mandatory=$true, HelpMessage="Your error message. Fill it up as necesary")]
     [string]$message,
+    [parameter(Mandatory=$false, HelpMessage="Recipe is an additional filter option for logging. The default is the name of the module and version")]
     [string]$recipe,
+    [parameter(Mandatory=$false, HelpMessage="The timestamp of the logging event. The Default is in Unix time")]
     [string]$time,
+    [parameter(Mandatory=$TRUE, HelpMessage="The sumologic sourceCategory see https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/HTTP-Source/Upload_Metrics_to_an_HTTP_Source")]
     [string]$sourceCategory,
+    [parameter(Mandatory=$false, HelpMessage="Sumologic sourceName see https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/HTTP-Source/Upload_Metrics_to_an_HTTP_Source")]
     [string]$sourceName,
+    [parameter(Mandatory=$false, HelpMessage="The source of the logging event. The default is the hostname of the node running the event")]
     [string]$sourcehost,
+    [parameter(Mandatory=$false, HelpMessage="Enable JSON for JSON style formating submission of the Sumologic message header.")]
     [switch]$json,
+    [parameter(Mandatory=$false, HelpMessage="Enable logfmt for logfmt style formating.")]
     [switch]$logfmt,
+    [parameter(Mandatory=$false, HelpMessage="Not implemented. In a future release it will allow the submission of logfile attachment to Sumologics")]
     [string]$file,
+    [parameter(Mandatory=$false, HelpMessage="The TEST switch flag will not submit any data but log everything to the concole")]
     [switch]$test,
+    [parameter(Mandatory=$false, HelpMessage="The Logerrors switch will output to console in conjunction with the -verbose parameter")]
     [switch]$LogErrors
     )
     #checks
@@ -191,9 +203,9 @@ function send-sumo {
         Recipe = "$recipe";
         number = "$number";
       }
-      $subfields = [pscustomobject]@{
-        message = "$subMessage"
-      }
+      # $subfields = [pscustomobject]@{
+      #   message = "$subMessage"
+      # }
       $subSource = [PSCustomObject]@{
         sourceType = "HTTP";
         name = "$recipe";
@@ -212,7 +224,7 @@ function send-sumo {
       $body =  ConvertTo-Json -InputObject $fields
     }
     if($logfmt){
-      $Tab = [char]9
+      #$Tab = [char]9
       $body = "level=$loglevel host='$sourcehost' time='$time' source='$sourceName' script='$recipe' msg='$message' number=$number"
     }
     $head = @{"X-Sumo-Host"="$sourcehost"
