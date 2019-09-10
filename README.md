@@ -36,6 +36,8 @@ or
 * [send-sumo](./Docs/send-sumo.md)
 * [send-email](./Docs/send-email.md)
 * [send-slack](./Docs/send-slack.md)
+* [start-PSRCapture](./Docs/start-PSRCapture)
+* [stop-PSRCapture](./Docs/stop-PSRCapture)
 
 ## Contributing
 
