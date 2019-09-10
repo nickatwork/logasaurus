@@ -1,6 +1,6 @@
-    ---
-external help file: logasaur-help.xml
-Module Name: logasaur
+---
+external help file: logasaurus-help.xml
+Module Name: logasaurus
 online version: https://github.com/nickatwork/logasaurus
 schema: 2.0.0
 ---
@@ -10,40 +10,35 @@ schema: 2.0.0
 ## SYNOPSIS
 Send logasaur log to aggregate logging service.
 
+
+
 ## SYNTAX
 
 ```
-send-sumo [[-AggregateUrl] <String>] [[-Aggregatekey] <String>] [[-loglevel] <String>] [[-number] <Int32>]
- [[-message] <String>] [[-recipe] <String>] [[-time] <String>] [[-sourceCategory] <String>]
+send-sumo [[-AggregateUrl] <String>] [-Aggregatekey] <String> [[-loglevel] <String>] [[-number] <Int32>]
+ [-message] <String> [[-recipe] <String>] [[-time] <String>] [[-sourceCategory] <String>]
  [[-sourceName] <String>] [[-sourcehost] <String>] [-json] [-logfmt] [[-file] <String>] [-test] [-LogErrors]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
- Dumps JSON or single line message or file to Sumologic aggregate logging service
+Dumps JSON or single line message, in logfmt styel, or file to Sumologic aggregate logging service
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> send-sumo -logfmt -message "$errordump" -loglevel info -aggregratekey "w8TNJtizSsYETc6kxLExYFL373Qo2XFUU6J
-```
+```PS C:\> send-sumo -logfmt -message "$errordump" -loglevel info -aggregratekey "w8TNJtizSsYETc6kxLExYFL373Qo2XFUU6J
 
-Sends a [logfmt style](https://www.brandur.org/logfmt) message to SumoLogic
+```
 
 ### Example 2
-```powershell
-PS C:\> send-sumo -json -message "$errordump" -loglevel info -aggregratekey "w8TNJtizSsYETc6kxLExYFL373Qo2XFUU6J
+```PS C:\> send-sumo -json -message "$errordump" -loglevel info -aggregratekey "w8TNJtizSsYETc6kxLExYFL373Qo2XFUU6J
 ```
-
-Sends a [json]() message to SumoLogic
 
 ## PARAMETERS
 
 ### -AggregateUrl
-
-SumoLogic HTTP URL target minus the Sumologic Key
+The URL To SumoLogic's v1 API, https://endpoint1.collection.us2.sumologic.com/receiver/v1/http
 
 ```yaml
 Type: String
@@ -58,15 +53,14 @@ Accept wildcard characters: False
 ```
 
 ### -Aggregatekey
-
-The key after the default api v1 sumologic URL, **https://endpoint1.collection.us2.sumologic.com/receiver/v1/http/YOURKEY**
+Your SumoLogic's API key to submit an HTTP log entry
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
@@ -74,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -LogErrors
-Logs errors to console
+The Logerrors switch will output to console in conjunction with the -verbose parameter
 
 ```yaml
 Type: SwitchParameter
@@ -89,7 +83,8 @@ Accept wildcard characters: False
 ```
 
 ### -file
-Not implemented yet - Sending a huge log dump + attaching a json or xml
+Not implemented.
+In a future release it will allow the submission of logfile attachment to Sumologics
 
 ```yaml
 Type: String
@@ -104,7 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### -json
-  Formatting of information in sumologic as JSON
+Enable JSON for JSON style formating submission of the Sumologic message header.
 
 ```yaml
 Type: SwitchParameter
@@ -113,13 +108,13 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: logfmt
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -logfmt
-  Formatting of information in sumologic as logfmt style. Simply a series of one or more key values.
+Enable logfmt for logfmt style formating.
 
 ```yaml
 Type: SwitchParameter
@@ -128,13 +123,14 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: logfmt
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -loglevel
-    The logging level: NOTSET, DEBUG, INFO, WARNING, ERROR or any category. The default is NOTSET
+Your logging level, examples: DEBUG ,INFO, WARNING, or ERROR.
+The default is INFO
 
 ```yaml
 Type: String
@@ -143,20 +139,21 @@ Aliases:
 
 Required: False
 Position: 2
-Default value: NOTSET
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -message
- Message contents for log
+Your error message.
+Fill it up as necesary
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 4
 Default value: None
 Accept pipeline input: False
@@ -164,7 +161,8 @@ Accept wildcard characters: False
 ```
 
 ### -number
- Number for error message
+Your error log or eventid number.
+Must be an integer
 
 ```yaml
 Type: Int32
@@ -179,7 +177,8 @@ Accept wildcard characters: False
 ```
 
 ### -recipe
- For logging, the recipe refers to the module name and version
+Recipe is an additional filter option for logging.
+The default is the name of the module and version
 
 ```yaml
 Type: String
@@ -188,13 +187,13 @@ Aliases:
 
 Required: False
 Position: 5
-Default value: module name + module version
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -sourceCategory
-  The sumologic sourceCategory see https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/HTTP-Source/Upload_Metrics_to_an_HTTP_Source
+The sumologic sourceCategory see https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/HTTP-Source/Upload_Metrics_to_an_HTTP_Source
 
 ```yaml
 Type: String
@@ -209,7 +208,7 @@ Accept wildcard characters: False
 ```
 
 ### -sourceName
- THe Sumologic sourceName see https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/HTTP-Source/Upload_Metrics_to_an_HTTP_Source
+Sumologic sourceName see https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/HTTP-Source/Upload_Metrics_to_an_HTTP_Source
 
 ```yaml
 Type: String
@@ -224,8 +223,8 @@ Accept wildcard characters: False
 ```
 
 ### -sourcehost
-
- Populated commonly by the hostname.
+The source of the logging event.
+The default is the hostname of the node running the event
 
 ```yaml
 Type: String
@@ -234,14 +233,13 @@ Aliases:
 
 Required: False
 Position: 9
-Default value: HOSTNAME
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -test
-
- Submits no data, just a console output of all the parameters. Used in conjunction with the -verbose switch
+The TEST switch flag will not submit any data but log everything to the concole
 
 ```yaml
 Type: SwitchParameter
@@ -256,8 +254,8 @@ Accept wildcard characters: False
 ```
 
 ### -time
-
-Optional override to default unix style timestamp generated at time of http put script execution
+The timestamp of the logging event.
+The Default is in Unix time
 
 ```yaml
 Type: String
@@ -266,7 +264,7 @@ Aliases:
 
 Required: False
 Position: 6
-Default value: get-date -uformat %s
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -1,44 +1,40 @@
 ---
 external help file: logasaurus-help.xml
 Module Name: logasaurus
-online version: https://github.com/nickatwork/logasaurus
+online version: https://github.com/nickak/logasaurus
+https://github.com/nickatwork
 schema: 2.0.0
 ---
 
-# set-logasaur
+# stop-PSRCapture
 
 ## SYNOPSIS
-Set logging levels globally throughout Logasaurus
+Stops Screen Capture with Problem Screen Recorder (PSR)
 MIT License Copyright 2019, nickatwork.com
 
 ## SYNTAX
 
 ```
-set-logasaur [[-loglevel] <String>] [-json] [-logfmt] [[-logfmtKeyPairs] <String>] [-test] [-LogErrors]
+stop-PSRCapture [[-captureFile] <String>] [-copyCaptureFile] [-moveCaptureFile]
+ [[-CaptureFileDestination] <String>] [-logEvents] [[-logfile] <String>] [[-recipe] <String>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-set-log changes the logging format and logging levels globally throughout the Logasaurus family.
+Stops Screen Capture with Problem Screen Recorder (PSR)
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-set-log -loglevel 20 -logfmt
+stop-PSRCapture
 ```
 
 ## PARAMETERS
 
-### -loglevel
-Logging Level, INFO or DEBUG.
-Default is Informational
-
-"NOTSET" = 0
-"ERROR" = 5
-"WARNING" =15
-"INFO" = 20
-"DEBUG" = 30
+### -captureFile
+Enter an output file.
+For example c:\utility\bobblahblah.zip
 
 ```yaml
 Type: String
@@ -52,8 +48,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -json
-Switch to use json formatting globally
+### -copyCaptureFile
+Copy the screen capture file
 
 ```yaml
 Type: SwitchParameter
@@ -67,8 +63,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -logfmt
-Switch to simply log data as a series of one or more key/value pairs
+### -moveCaptureFile
+{{Fill moveCaptureFile Description}}
 
 ```yaml
 Type: SwitchParameter
@@ -82,8 +78,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -logfmtKeyPairs
-Location of configuration file for logfmt key/value pairs
+### -CaptureFileDestination
+{{Fill CaptureFileDestination Description}}
 
 ```yaml
 Type: String
@@ -97,8 +93,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -test
-{{Fill test Description}}
+### -logEvents
+To trigger logging events
 
 ```yaml
 Type: SwitchParameter
@@ -112,17 +108,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LogErrors
-{{Fill LogErrors Description}}
+### -logfile
+Specify a logfile.
+Default is c:\utility\logs\PSRCapture.log
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -recipe
+For logging is FRMT
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -139,5 +151,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## RELATED LINKS
 
-[https://github.com/nickatwork/logasaurus](https://github.com/nickatwork/logasaurus)
+[https://github.com/nickak/logasaurus
+https://github.com/nickatwork](https://github.com/nickak/logasaurus
+https://github.com/nickatwork)
 

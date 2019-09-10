@@ -69,7 +69,7 @@ PowerShellVersion = '5.1'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @('send-sumo','send-email','send-slack','get-log','set-logasaur')
+FunctionsToExport = @('send-sumo','send-email','send-slack','get-log','set-logasaur','start-PSRCapture','stop-PSRCapture')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()

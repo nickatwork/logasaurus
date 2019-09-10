@@ -8,7 +8,7 @@ function send-sumo {
 
 .DESCRIPTION
 
-    Dumps JSON or single line message or file to sumologic
+    Dumps JSON or single line message or file to DataDog
 
 .PARAMETER AggregateUrl
 
@@ -91,9 +91,9 @@ https://github.com/nickatwork/logasaurus
 #>
     [CmdletBinding()]
   param(
-    [parameter(Mandatory=$false, HelpMessage="The URL To SumoLogic's v1 API, https://endpoint1.collection.us2.sumologic.com/receiver/v1/http")]
+    [parameter(Mandatory=$false, HelpMessage="The URL To DataLogic's v1 API, https://http-intake.logs.datadoghq.com/v1/input/")]
     [string]$AggregateUrl,
-    [parameter(Mandatory=$true, HelpMessage="Your SumoLogic's API key to submit an HTTP log entry")]
+    [parameter(Mandatory=$true, HelpMessage="Your DataLogic's API key to submit an HTTP log entry")]
     [string]$Aggregatekey,
     [parameter(Mandatory=$false, HelpMessage="Your logging level, examples: DEBUG ,INFO, WARNING, or ERROR. The default is INFO")]
     [string]$loglevel,

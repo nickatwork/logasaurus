@@ -9,7 +9,6 @@
 .PARAMETER logDirectory
 
     The directory to search for last modified log file
-
 .PARAMETER tailLines
 
     Number of lines to tail
