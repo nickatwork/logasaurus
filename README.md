@@ -18,6 +18,7 @@ Logging modules to simply logging scenarios. Send a log message to SumoLogic, em
 
 
 + [![Everybody wins with Windows](https://img.shields.io/badge/Powershell_Core-6.2-blue.svg)](https://github.com/powershell/)
++ [![Everybody wins with Windows](https://img.shields.io/badge/Powershell_Core-7.0_Preview_3-blue.svg)](https://github.com/powershell/)
 
 
 ## Up and Running
