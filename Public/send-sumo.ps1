@@ -153,7 +153,7 @@ https://github.com/nickatwork/logasaurus
     }
     $loglevel = $loglevel.toupper()
     if(!$sourcehost){
-      $sourcehost = "env:computername"
+      $sourcehost = "$env:computername"
       if($env:SHELL -eq "/bin/bash"){
 
         try{

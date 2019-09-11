@@ -1,5 +1,3 @@
-# Logasaurus
-
 
 
     ██╗      ██████╗  ██████╗  █████╗ ███████╗ █████╗ ██╗   ██╗██████╗ ██╗   ██╗███████╗
@@ -9,6 +7,8 @@
     ███████╗╚██████╔╝╚██████╔╝██║  ██║███████║██║  ██║╚██████╔╝██║  ██║╚██████╔╝███████║
     ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝
 
+
+![LOGASAURUS](./logasaurus.gif)
 
 ## Description
 
@@ -33,6 +33,7 @@ or
 ### Tools
 
 * [get-log](./Docs/get-log.md)
+* [send-datadog](./Docs/send-datadog.md)
 * [send-sumo](./Docs/send-sumo.md)
 * [send-email](./Docs/send-email.md)
 * [send-slack](./Docs/send-slack.md)

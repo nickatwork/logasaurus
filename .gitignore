@@ -16,3 +16,4 @@ Thumbs.db
 *.backup
 ./test
 test/
+Private/

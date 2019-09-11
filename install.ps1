@@ -12,6 +12,8 @@ if((Get-ExecutionPolicy) -gt 'RemoteSigned' -or (Get-ExecutionPolicy) -eq 'ByPas
 if(-not (test-path "./logasaurus")){
     start-bitstransfer -source https://github.com/nickatwork/logasaurus/logasaurus.zip
     Expand-Archive logasaur.zip
+    new-item "./logasaurus/Private" -type Directory
+    
 }
 cd logaSaur
 if(-not (test-path "logasaurus.psd1")){
