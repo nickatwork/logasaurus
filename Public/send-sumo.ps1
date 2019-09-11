@@ -187,7 +187,7 @@ https://github.com/nickatwork/logasaurus
       $time = get-date -uformat %s
     }
     if(!$recipe){
-      $recipe = "$modulename v.'$moduleversions'"
+      $recipe = "$modulename v.$moduleversions"
     }
     if(!$sourceCategory){
       $sourceCategory = "NOTSET"
@@ -225,7 +225,7 @@ https://github.com/nickatwork/logasaurus
     }
     if($logfmt){
       #$Tab = [char]9
-      $body = "level=$loglevel host='$sourcehost' time='$time' source='$sourceName' script='$recipe' msg='$message' number=$number"
+      $body = "level='$loglevel' host='$sourcehost' time='$time' source='$sourceName' script='$recipe' msg='$message' number=$number"
     }
     $head = @{"X-Sumo-Host"="$sourcehost"
     "X-Sumo-Dimensions"="ComputerName,Time,LogLevel,Recipe,message"
