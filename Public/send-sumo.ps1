@@ -202,6 +202,7 @@ https://github.com/nickatwork/logasaurus
         SourceName = "$sourceCategory";
         Recipe = "$recipe";
         number = "$number";
+        messageverbose = "$message"
       }
       # $subfields = [pscustomobject]@{
       #   message = "$subMessage"
