@@ -58,52 +58,73 @@ send-mail.ps1 -recipient ad.rock@bb.com -subject "Gonna kick your root down" -cc
 
 
 function send-email {
-    #Parameters
-
         [CmdletBinding()]
         param(
-        [string]$ErrorLog = './log.log',
-        [string]$username,
+        [parameter(Mandatory=$true, HelpMessage="Email authenicator sender is required")]
+        [string]$userNameEmail,
+        [parameter(Mandatory=$false, HelpMessage="Email sender, can be the same as userNameEmail is expected")]
         [string]$mailuser,
-        [string]$password,
+        [parameter(Mandatory=$true, HelpMessage="Email credentials are crucial.")]
+        [string]$passwordEmail,
+        [parameter(Mandatory=$true, HelpMessage="Email recipent is expected")]
         [string]$recipient,
+        [parameter(Mandatory=$true, HelpMessage="Email body is expected. Think of the reader! What is this email!")]
         [string]$body,
         [string]$cc,
+        [parameter(Mandatory=$true, HelpMessage="Email subject is expected. Help the reader.")]
         [string]$subject,
         [string]$transaction,
+        [parameter(Mandatory=$true, HelpMessage="SMTP host is necessary to send the message.")]
         [string]$SMTPhost,
+        [parameter(Mandatory=$false, HelpMessage="SMTP port is necessary to send the message. Default is port 587")]
         [int32]$SMTPport,
         [switch]$test,
         [switch]$LogErrors
-
         )
 
-        $secpasswd = ConvertTo-SecureString $password -AsPlainText -Force
-        $seccreds = New-Object System.Management.Automation.PSCredential ("$mailuser", $secpasswd)
+        $secpasswd = ConvertTo-SecureString $passwordEmail -AsPlainText -Force
+        $seccreds = New-Object System.Management.Automation.PSCredential ("$usernameEmail", $secpasswd)
 
-        if(!$body){
-            $body = Get-Content "./hello.html"
-        }
-        else{
-            $body = Get-Content "$body"
-        }
         if(!$SMTPport){
             $SMTPPort = 587
         }
-
-        $mailParams=@{
-            To = "$recipient"
-            From = "$mailuser"
-            cc = "$cc"
-            Subject = "$subject"
-            SMTPServer = "$SMTPhost"
-            Body = $Body
-            BodyAsHTML = $True
-            Port = $SMTPport
-            UseSSL = $True
-            Credential = $seccreds
+        if(!$mailuser){
+            $mailuser = $userNameEmail
+        }
+        if($cc){
+            $mailParams=@{
+                To = "$recipient"
+                From = "$mailuser"
+                cc = "$cc"
+                Subject = "$subject"
+                SMTPServer = "$SMTPhost"
+                Body = $Body
+                Port = $SMTPport
+                UseSSL = $True
+                Credential = $seccreds
+                }
+        }
+        if(!$cs){
+            $mailParams=@{
+                To = "$recipient"
+                From = "$mailuser"
+                Subject = "$subject"
+                SMTPServer = "$SMTPhost"
+                Body = $Body
+                Port = $SMTPport
+                UseSSL = $True
+                Credential = $seccreds
+                }
+        }
+        if($test){
+            write-verbose "Recipent: $recipient"
+            write-verbose "From mailuser: $mailuser"
+            write-verbose "Subject: $subject"
+            write-verbose "Body: $body"
+            foreach($item in $mailParams){
+                write-verbose "Item: $item"
             }
-
+        }
         try{
             Send-MailMessage @mailParams -ErrorAction stop
         }

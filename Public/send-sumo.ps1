@@ -187,7 +187,7 @@ https://github.com/nickatwork/logasaurus
       $time = get-date -uformat %s
     }
     if(!$recipe){
-      $recipe = "$modulename v.$moduleversions"
+      $recipe = "$modulename v.$moduleversions "
     }
     if(!$sourceCategory){
       $sourceCategory = "NOTSET"
