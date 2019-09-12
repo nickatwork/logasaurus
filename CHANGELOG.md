@@ -1,3 +1,5 @@
+## 0.9.3
+- <span style="color:blue">[nickatwork](https://github.com/nickatwork)</span> 20190911 Email module clean-up. Added parameters and logic for cc
 
 ## 0.9.1
 - <span style="color:blue">[nickatwork](https://github.com/nickatwork)</span> - Changelog adds, renaming from logasaur to logsaurus.
