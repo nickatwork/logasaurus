@@ -8,47 +8,28 @@ schema: 2.0.0
 # send-email
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates SMTP style message
 
 ## SYNTAX
 
 ```
-send-email [[-ErrorLog] <String>] [[-username] <String>] [[-mailuser] <String>] [[-password] <String>]
- [[-recipient] <String>] [[-body] <String>] [[-cc] <String>] [[-subject] <String>] [[-transaction] <String>]
- [[-SMTPhost] <String>] [[-SMTPport] <Int32>] [-test] [-LogErrors] [<CommonParameters>]
+send-email [-userNameEmail] <String> [[-mailuser] <String>] [-passwordEmail] <String> [-recipient] <String>
+ [-body] <String> [[-cc] <String>] [-subject] <String> [[-transaction] <String>] [-SMTPhost] <String>
+ [[-SMTPport] <Int32>] [-test] [-LogErrors] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Creates SMTP style message
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
-```
-
-{{ Add example description here }}
+'''send-mail -recipient ad.rock@bb.com -subject "Gonna kick your root down" -cc "mike.d@bb.com,mixmaster.mike@neverrockfila.com" -body "Text stream"'''
 
 ## PARAMETERS
 
-### -ErrorLog
-{{Fill ErrorLog Description}}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -LogErrors
-{{Fill LogErrors Description}}
+{{ Fill LogErrors Description }}
 
 ```yaml
 Type: SwitchParameter
@@ -63,10 +44,26 @@ Accept wildcard characters: False
 ```
 
 ### -SMTPhost
-{{Fill SMTPhost Description}}
+SMTP host is necessary to send the message.
 
 ```yaml
 Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 8
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SMTPport
+SMTP port is necessary to send the message.
+Default is port 587
+
+```yaml
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -77,23 +74,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SMTPport
-{{Fill SMTPport Description}}
+### -body
+Email body is expected.
+Think of the reader!
+What is this email!
 
 ```yaml
-Type: Int32
+Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 10
+Required: True
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -body
-{{Fill body Description}}
+### -cc
+{{ Fill cc Description }}
 
 ```yaml
 Type: String
@@ -107,8 +106,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -cc
-{{Fill cc Description}}
+### -mailuser
+Email sender, can be the same as userNameEmail is expected
 
 ```yaml
 Type: String
@@ -116,74 +115,60 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -mailuser
-{{Fill mailuser Description}}
+### -passwordEmail
+Email credentials are crucial.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -password
-{{Fill password Description}}
+### -recipient
+Email recipent is expected
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -recipient
-{{Fill recipient Description}}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -subject
-{{Fill subject Description}}
+Email subject is expected.
+Help the reader.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 7
+Required: True
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -test
-{{Fill test Description}}
+{{ Fill test Description }}
 
 ```yaml
 Type: SwitchParameter
@@ -198,7 +183,7 @@ Accept wildcard characters: False
 ```
 
 ### -transaction
-{{Fill transaction Description}}
+{{ Fill transaction Description }}
 
 ```yaml
 Type: String
@@ -206,34 +191,34 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 8
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -username
-{{Fill username Description}}
+### -userNameEmail
+Email authenicator sender is required
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 1
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### None
+
 ## OUTPUTS
 
 ### System.Object

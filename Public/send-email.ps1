@@ -1,16 +1,21 @@
 <#
 .Synopsis
-   Creates mailbox
+   Creates SMTP style message
+
    MIT License Copyright 2019, nickatwork.com
 .DESCRIPTION
 
-    Sends HTML formatted email to recipient
+    Creates SMTP style message
+
+.PARAMETER userNameEmail
+
+    SMTP authenicating user
 
 .PARAMETER mailuser
 
     SMTP relay username
 
-.PARAMETER password
+.PARAMETER passwordEmail
 
     Sender password for SMTP relay access
 
@@ -40,13 +45,15 @@
 
 .PARAMETER test
 
+    Sends email with exporting to console with -verbose tag
+
 .PARAMETER logErrors
 
-    Logs errors to ./logs.log
+    Switch to enable errors to console
 
 .EXAMPLE
 
-send-mail.ps1 -recipient ad.rock@bb.com -subject "Gonna kick your root down" -cc "mike.d@bb.com,mixmaster.mike@neverrockfila.com"
+send-mail -recipient ad.rock@bb.com -subject "Gonna kick your root down" -cc "mike.d@bb.com,mixmaster.mike@neverrockfila.com" -body "Text stream"
 
 .Notes
 
