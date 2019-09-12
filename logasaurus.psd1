@@ -12,7 +12,7 @@
 RootModule = './logasaurus.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.9.3'
+ModuleVersion = '0.9.4'
 
 # Supported PSEditions
 CompatiblePSEditions = @('Desktop','Core')
@@ -27,7 +27,7 @@ Author = 'nickatwork'
 CompanyName = 'nickatwork.com'
 
 # Copyright statement for this module
-Copyright = '2019 (c) nickatwork.'
+Copyright = '2019 (c) nickatwork.com'
 
 # Description of the functionality provided by this module
 # Description = ''
@@ -69,7 +69,7 @@ PowerShellVersion = '5.1'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @('send-sumo','send-email','send-slack','get-log','set-logasaur','start-PSRCapture','stop-PSRCapture')
+FunctionsToExport = @('send-sumo','send-email','send-slack','get-log','set-logasaur','start-PSRCapture','stop-PSRCapture','send-datadoge','send-stathat')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
@@ -98,10 +98,10 @@ PrivateData = @{
         # Tags = @()
 
             # A URL to the license for this module.
-            LicenseUri = 'https://gitlab.com/nickatwork/logasaur/blob/master/LICENSE'
+            LicenseUri = 'https://github.com/nickatwork/logasaur/blob/master/LICENSE'
 
             # A URL to the main website for this project.
-             ProjectUri = 'https://gitlab.com/nickatwork/logasaur'
+             ProjectUri = 'https://github.com/nickatwork/logasaur'
         # A URL to an icon representing this module.
         # IconUri = ''
 

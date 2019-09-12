@@ -1,9 +1,9 @@
 
 
-function send-sumo {
+function send-datadoge {
 <#
 .Synopsis
-   Send logasaur log to aggregate logging service.
+   Send logasaur log to aggregate logging service, like DataDoge
    MIT License Copyright 2019, nickatwork.com
 
 .DESCRIPTION
@@ -12,11 +12,11 @@ function send-sumo {
 
 .PARAMETER AggregateUrl
 
-  SumoLogic HTTP URL target minus the Sumologic Key
+  DataLogic HTTP URL target minus the DataDog API Key
 
-.PARAMETER Aggregatekey
+.PARAMETER applicationKeyDataDoge
 
-  HTTPS Key
+  Datadog application key for authenication
 
 .PARAMETER file
 
@@ -60,11 +60,11 @@ function send-sumo {
 
 .PARAMETER json
 
-  Formatting of logging message in Sumologic as JSON
+  Formatting of logging message in datadog as JSON
 
 .PARAMETER logfmt
 
-  Formatting of logging message in Sumologic as logfmt style. Simply a series of one or more key values.
+  Formatting of logging message in datadog as logfmt style. Simply a series of one or more key values.
 
 .PARAMETER test
 
@@ -74,13 +74,13 @@ function send-sumo {
 
   Logs errors to console
 
-.EXAMPLE sumologic logfmt message with debug level information
+.EXAMPLE datadog logfmt message with debug level information
 
-  send-sumo -logfmt -message "$errordump" -loglevel info -aggregratekey "w8TNJtizSsYETc6kxLExYFL373Qo2XFUU6Js"
+  send-datadog -logfmt -message "$errordump" -loglevel info -aggregratekey "w8TNJtizSsYETc6kxLExYFL373Qo2XFUU6Js"
 
-.EXAMPLE sumologic json message with specificed sumologic category and information log level informational
+.EXAMPLE datadog json message with specificed datadog category and information log level informational
 
-  send-sumo -json -message "$dinodump" -loglevel error -sourceCategory "prod/API/infrastructure.nickatwork.com"
+  send-datadog -json -message "$dinodump" -loglevel error -sourceCategory "prod/API/infrastructure.nickatwork.com"
 
 
 .Notes
@@ -91,10 +91,12 @@ https://github.com/nickatwork/logasaurus
 #>
     [CmdletBinding()]
   param(
-    [parameter(Mandatory=$false, HelpMessage="The URL To DataLogic's v1 API, https://http-intake.logs.datadoghq.com/v1/input/")]
+    [parameter(Mandatory=$false, HelpMessage="The URL To DataDoge's v1 API, https://http-intake.logs.datadoghq.com/v1/input/")]
     [string]$AggregateUrl,
-    [parameter(Mandatory=$true, HelpMessage="Your DataLogic's API key to submit an HTTP log entry")]
-    [string]$Aggregatekey,
+    [parameter(Mandatory=$false, HelpMessage="Your DataDoge's v1 API Key")]
+    [string]$apiKeyNameDataDoge,
+    [parameter(Mandatory=$true, HelpMessage="Your DataLogic's Application key to submit an HTTP log entry")]
+    [string]$applicationKeyDataDoge,
     [parameter(Mandatory=$false, HelpMessage="Your logging level, examples: DEBUG ,INFO, WARNING, or ERROR. The default is INFO")]
     [string]$loglevel,
     [parameter(Mandatory=$false, HelpMessage="Your error log or eventid number. Must be an integer")]
@@ -105,9 +107,9 @@ https://github.com/nickatwork/logasaurus
     [string]$recipe,
     [parameter(Mandatory=$false, HelpMessage="The timestamp of the logging event. The Default is in Unix time")]
     [string]$time,
-    [parameter(Mandatory=$TRUE, HelpMessage="The sumologic sourceCategory see https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/HTTP-Source/Upload_Metrics_to_an_HTTP_Source")]
+    [parameter(Mandatory=$TRUE, HelpMessage="The DataDog's similar to sumologic sourceCategory see ")]
     [string]$sourceCategory,
-    [parameter(Mandatory=$false, HelpMessage="Sumologic sourceName see https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/HTTP-Source/Upload_Metrics_to_an_HTTP_Source")]
+    [parameter(Mandatory=$false, HelpMessage="The DataDog's similar to Sumologic sourceName see https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/HTTP-Source/Upload_Metrics_to_an_HTTP_Source")]
     [string]$sourceName,
     [parameter(Mandatory=$false, HelpMessage="The source of the logging event. The default is the hostname of the node running the event")]
     [string]$sourcehost,
@@ -130,7 +132,7 @@ https://github.com/nickatwork/logasaurus
         }
     $pstype = get-host
     $psversion = $pstype.version
-    if($psversion -lt 6.0.0){
+    if($psversion -lt 6.2.0){
       $messageverbose = "PowerShell version is $psversion, setting working environment to legacy"
       write-debug "level=[debug] host='$sourcehost' time='$time' source='$sourceName' script='$recipe' msg='$messageverbose' number=$number"
       $pscheck = "legacy"
@@ -143,10 +145,10 @@ https://github.com/nickatwork/logasaurus
       }
     }
     if(!$Aggregatekey){
-      $Aggregatekey = "Get a key at SumoLogic"
+      $aggregrateKeyDataDoge = "Get a key at Datadog.com"
     }
     if(!$AggregateUrl){
-      $AggregateUrl = "https://endpoint1.collection.us2.sumologic.com/receiver/v1/http/$Aggregatekey"
+      $AggregateUrl = "https://http-intake.logs.datadoghq.com/v1/input//$Aggregatekey"
     }
     if(!$loglevel){
       $loglevel = 'INFO'
@@ -328,4 +330,4 @@ https://github.com/nickatwork/logasaurus
 
   }
 
-  Export-ModuleMember -Function send-sumo -Variable *
+  Export-ModuleMember -Function send-datadoge -Variable *

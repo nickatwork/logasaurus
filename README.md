@@ -12,7 +12,7 @@
 
 ## Description
 
-Logging modules to simply logging scenarios. Send a log message to SumoLogic, email, slack, or a local log file formatted a logfmt or JSON.
+Logging modules to simply logging scenarios. Send a log message to SumoLogic, . StatHat, DataDog, MS Teams, email, slack, or a local log file formatted a logfmt or JSON. Capture Windows application screen events.
 
 ## Requirements
 
@@ -24,10 +24,6 @@ Logging modules to simply logging scenarios. Send a log message to SumoLogic, em
 ## Up and Running
 
 ### Installation
-
-`iex (new-object net.webclient).downloadstring('https://github.com/nickatwork/logasaur/install.ps1')`
-
-or
 
 `git clone https://github.com/nickatwork/logasaurus.git`
 
