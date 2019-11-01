@@ -1,4 +1,4 @@
-<#
+﻿<#
 .Synopsis
    Log tailing
    MIT License Copyright 2019, nickatwork.com
