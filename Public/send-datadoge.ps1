@@ -3,7 +3,7 @@
 function send-datadoge {
 <#
 .Synopsis
-   Send logasaur log to aggregate logging service, like DataDoge
+   Send logasaur log to aggregate logging service, like DataDog
    MIT License Copyright 2019, nickatwork.com
 
 .DESCRIPTION
